@@ -39,12 +39,12 @@ const Navbar = () => {
                                     <div className="flex items-center gap-4">
                                         <NavLink to="/login"
                                             className={({ isActive }) =>
-                                                isActive ? "text-white font-semibold" : "text-gray-300"
+                                                isActive ? "text-gray-900 font-semibold" : "text-gray-700"
                                             }
                                         >Login</NavLink>
                                         <NavLink to="/signup"
                                             className={({ isActive }) =>
-                                                isActive ? "text-white font-semibold" : "text-gray-300"
+                                                isActive ? "text-gray-900 font-semibold" : "text-gray-700"
                                             }
                                         >Sign Up</NavLink>
                                     </div>
