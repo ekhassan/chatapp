@@ -38,11 +38,12 @@ const LoginPage = () => {
 
     return (
         <div className="h-screen max-h-screen flex items-center justify-center">
-            <div className="p-5 backdrop-blur-sm border border-gray-500 rounded-xl">
+            <div className="p-5 backdrop-blur-sm  rounded-xl">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h2 className='font-bold text-3xl text-center'>
+                    <h2 className='font-bold text-3xl text-center py-5'>
                         Login
                     </h2>
+                    <hr />
                     <div className='mt-4'>
                         <label className="input input-bordered flex items-center gap-2 bg-transparent rounded-full">
                             <Mail className='h-4 w-4 opacity-70' size={16} />
@@ -58,7 +59,7 @@ const LoginPage = () => {
                         <label className="input input-bordered flex items-center gap-2 bg-transparent rounded-full">
                             <Key className='h-4 w-4 opacity-70' size={16} />
                             <input type={showPassword ? 'text' : 'password'} className="grow" placeholder="Password"
-                                id="email"
+                                id="password"
                                 {...register('password', { required: 'Password is required' })}
                             />
                             <button
@@ -86,7 +87,7 @@ const LoginPage = () => {
                     </div>
                 </form>
                 <div className="mt-4">
-                    <p>Dont have an account? <Link to="/register" className="font-semibold underline hover:no-underline"> Register here.</Link></p>
+                    <p>Dont have an account? <Link to="/signup" className="font-semibold underline hover:no-underline"> Register here.</Link></p>
                 </div>
             </div>
         </div>
