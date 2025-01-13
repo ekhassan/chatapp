@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Key, Eye, EyeClosed } from "lucide-react"
+import { Mail, Key, Eye, EyeClosed, UserRound } from "lucide-react"
 
 import { UserAuth } from '../context/authContext';
 
@@ -31,6 +31,8 @@ const SignupPage = () => {
         throw new Error(error);
       }
 
+      toast.success("Verification sent to your email")
+
       if (session) {
         toast.success('Signup successful! Redirecting...');
         navigate('/chat');
@@ -51,6 +53,18 @@ const SignupPage = () => {
             Sign Up
           </h2>
           <hr />
+          <div className='mt-4'>
+            <label className="input input-bordered flex items-center gap-2 bg-transparent rounded-full">
+              <UserRound className='h-4 w-4 opacity-70' size={16} />
+
+              <input type="text" className="grow" placeholder="Full Name"
+                id="name"
+                {...register('displayName', { required: 'Full Name is required' })}
+                autoComplete='off'
+              />
+            </label>
+            {errors.email && <span className="text-red-500">{errors.email.message}</span>}
+          </div>
           <div className='mt-4'>
             <label className="input input-bordered flex items-center gap-2 bg-transparent rounded-full">
               <Mail className='h-4 w-4 opacity-70' size={16} />

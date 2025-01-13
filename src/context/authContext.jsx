@@ -22,6 +22,8 @@ export const AuthContextProvider = ({ children }) => {
             return { success: false, error };
         }
 
+        console.log(data)
+
         return { success: true, data };
     };
 
@@ -38,7 +40,6 @@ export const AuthContextProvider = ({ children }) => {
                 return { success: false, error: error.message };
             }
 
-            console.log("Sign-in success:", data);
             return { success: true, session: data.session };
         } catch (error) {
 

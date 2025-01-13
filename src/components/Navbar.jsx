@@ -15,21 +15,38 @@ const Navbar = () => {
                     <Link to='/' ><h3 className="text-xl  font-semibold">{import.meta.env.VITE_APP_NAME}</h3></Link>
                     <div className="flex items-center gap-5">
                         <NavLink
-                            to="/messages"
+                            to="/"
                             className={({ isActive }) =>
-                                isActive ? "text-white" : "text-gray-300"
+                                isActive ? "text-white font-semibold" : "text-gray-300"
                             }
                         >
-                            Hello
+                            Home
+                        </NavLink>
+                        <NavLink
+                            to="/chat"
+                            className={({ isActive }) =>
+                                isActive ? "text-white font-semibold" : "text-gray-300"
+                            }
+                        >
+                            Chat
                         </NavLink>
 
                         <div>
                             {
                                 session?.user ?
                                     <Popover session={session} onClick={signOut} /> :
-                                    <>
-                                        <Link to="/login">Login</Link>
-                                    </>
+                                    <div className="flex items-center gap-4">
+                                        <NavLink to="/login"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-white font-semibold" : "text-gray-300"
+                                            }
+                                        >Login</NavLink>
+                                        <NavLink to="/signup"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-white font-semibold" : "text-gray-300"
+                                            }
+                                        >Sign Up</NavLink>
+                                    </div>
                             }
                         </div>
 
