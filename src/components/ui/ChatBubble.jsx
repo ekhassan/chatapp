@@ -1,6 +1,7 @@
+import { BotMessageSquare } from "lucide-react";
 
 
-const ChatBubble = ({ session, msg }) => {
+const ChatBubble = ({ session, message, response }) => {
 
     const avatarContent = session ? session?.user?.email.charAt(0).toUpperCase() : '?';
 
@@ -26,7 +27,21 @@ const ChatBubble = ({ session, msg }) => {
                         )}
                     </div>
                 </div>
-                <div className="chat-bubble">It was said that you would, destroy the Sith, not join them.</div>
+                <div className="chat-bubble">{message}</div>
+            </div>
+            <div className="chat chat-start">
+                <div className="chat-image avatar">
+                    <div className="w-10 rounded-full">
+
+                        <div
+                            id="avatarButton"
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-black font-bold"
+                        >
+                            <BotMessageSquare />
+                        </div>
+                    </div>
+                </div>
+                <div className="chat-bubble bg-[#5f5f5f] text-gray-100">{response}</div>
             </div>
         </>
     )

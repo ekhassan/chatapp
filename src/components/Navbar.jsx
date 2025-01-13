@@ -8,21 +8,19 @@ const Navbar = () => {
 
 
     return (
-        <header className="fixed w-full p-2 backdrop-blur-sm z-10">
+        <header className="fixed w-full p-2 backdrop-blur-sm z-10 bg-slate-100">
             <nav>
                 <div className="flex items-center justify-between p-4">
-                    <Link to='/' ><h3 className="text-xl  font-semibold">{import.meta.env.VITE_APP_NAME}</h3></Link>
+                    <Link to='/' ><h3 className="text-base font-bold text-gray-900 ">{import.meta.env.VITE_APP_NAME}</h3></Link>
                     <div className="flex items-center gap-5">
                         <NavLink
                             to="/"
                             className={({ isActive }) =>
-                                isActive ? "text-white font-semibold" : "text-gray-300"
+                                isActive ? "text-gray-900  font-semibold" : "text-gray-700"
                             }
                         >
                             Home
                         </NavLink>
-
-
                         <div>
                             {
                                 session?.user ?
@@ -30,7 +28,7 @@ const Navbar = () => {
                                         <NavLink
                                             to="/chat"
                                             className={({ isActive }) =>
-                                                isActive ? "text-white font-semibold" : "text-gray-300"
+                                                isActive ? "text-gray-900 font-semibold pe-5" : "text-gray-700 pe-5"
                                             }
                                         >
                                             Chat

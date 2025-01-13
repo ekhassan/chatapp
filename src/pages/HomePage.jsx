@@ -1,30 +1,29 @@
 
-import { ArrowUpRight } from "lucide-react"
+import { MessageSquare } from "lucide-react"
 
 import { Link } from "react-router-dom"
+
+import BramHead from "../assets/images/hero_section.png"
 
 const HomePage = () => {
     return (
         <>
-            <div>
-                <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background: radial-gradient(125% 125% at 50% 10%, #1c1e1f 40%, #63e 100%);]"></div>
-                <div className='flex items-center justify-center h-screen'>
-                    <div className='text-center px-3'>
-                        <h1 className='text-6xl font-bold text-white'>
-                            Unlock mysteries
+            <div className="px-5 md:px-20">
+                <div className='flex items-center justify-between h-screen flex-wrap'>
+                    <div className='px-3 order-2 md:order-1'>
+                        <h1 className='text-5xl font-bold text-white'>
+                            Welkom bij Sales Vol Energie
                         </h1>
-                        <h1 className='text-6xl font-bold text-white'>
-                            wherever you are
-                        </h1>
-
                         <h5 className='text-wrap py-6 text-white font-medium'>
-                            {import.meta.env.VITE_APP_NAME} is an extensible, self-hosted AI interface that adapts to prompt to generate image.
+                            This is the home of Bram&apos;s Sales Coaching Ai Twin
                         </h5>
                         <div>
-                            <Link to={'/chat'} className="btn rounded-full btn-wide glass text-white hover:text-black hover:bg-white">Get Started <ArrowUpRight size={16} /></Link>
+                            <Link to={'/chat'} className="btn rounded bg-[#FFAD00] btn-wide text-white hover:text-black hover:bg-white"><MessageSquare /> Probeer het uit</Link>
                         </div>
                     </div>
-
+                    <div className="w-96  order-1 md:order-2 mt-20 md:mt-0 ">
+                        <img src={BramHead} alt="" className="w-full h-full rounded-md" />
+                    </div>
                 </div>
             </div>
         </>
