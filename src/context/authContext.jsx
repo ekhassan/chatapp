@@ -8,10 +8,13 @@ export const AuthContextProvider = ({ children }) => {
     const [session, setSession] = useState(undefined);
 
     // Sign up
-    const signUpNewUser = async (email, password) => {
+    const signUpNewUser = async (email, password, displayName) => {
         const { data, error } = await supabase.auth.signUp({
             email: email.toLowerCase(),
             password: password,
+            data: {
+                displayName: displayName,
+            },
         });
 
         if (error) {
@@ -31,14 +34,14 @@ export const AuthContextProvider = ({ children }) => {
             });
 
             if (error) {
-                console.error("Sign-in error:", error.message); // Log the error for debugging
-                return { success: false, error: error.message }; // Return the error
+                console.error("Sign-in error:", error.message);
+                return { success: false, error: error.message };
             }
 
             console.log("Sign-in success:", data);
-            return { success: true, session: data.session }; // Return the user data
+            return { success: true, session: data.session };
         } catch (error) {
-            // Handle unexpected issues
+
             console.error("Unexpected error during sign-in:", error.message);
             return {
                 success: false,
