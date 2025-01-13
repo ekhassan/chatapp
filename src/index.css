@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Space Grotesk";
+    src: url("./assets/fonts/SpaceGrotesk.ttf") format("truetype");
+    font-style: normal;
+  }
+  
+  html {
+    background-color: #1c1e1f !important;
+    scroll-behavior: smooth;
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #fafafa !important;
+  }
