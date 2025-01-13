@@ -11,7 +11,7 @@ const LoginPage = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false)
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { signInUser, session } = UserAuth();
     const navigate = useNavigate();
 
@@ -34,6 +34,7 @@ const LoginPage = () => {
 
             if (session) {
                 toast.success('Login successful! Redirecting...');
+                reset()
                 navigate('/chat');
             }
         } catch (error) {

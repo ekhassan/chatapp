@@ -11,7 +11,7 @@ const SignupPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false)
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { signUpNewUser, session } = UserAuth();
   const navigate = useNavigate();
 
@@ -22,18 +22,20 @@ const SignupPage = () => {
     }
   }, [navigate, session])
 
-  const onSubmit = async ({ email, password }) => {
+  const onSubmit = async ({ displayName, email, password }) => {
     try {
       setLoading(true)
-      const { session, error } = await signUpNewUser(email, password);
+      const { session, error } = await signUpNewUser(email, password, displayName);
 
       if (error) {
         throw new Error(error);
       }
 
-      toast.success("Verification sent to your email")
+
+
 
       if (session) {
+        toast.success("Verification sent to your email")
         toast.success('Signup successful! Redirecting...');
         navigate('/chat');
       }
@@ -41,6 +43,7 @@ const SignupPage = () => {
       toast.error(error.message || 'Signup failed. Please try again.');
     }
     finally {
+      reset();
       setLoading(false)
     }
   };
@@ -58,7 +61,7 @@ const SignupPage = () => {
               <UserRound className='h-4 w-4 opacity-70' size={16} />
 
               <input type="text" className="grow" placeholder="Full Name"
-                id="name"
+                id="displayName"
                 {...register('displayName', { required: 'Full Name is required' })}
                 autoComplete='off'
               />

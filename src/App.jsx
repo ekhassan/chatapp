@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
 import PrivateRoute from "./components/PrivateRoute"
 import ChatPage from "./pages/ChatPage"
+import ChatLayout from "./layouts/ChatLayout"
 
 
 const router = createBrowserRouter([
@@ -13,19 +14,27 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
-      { path: '/', element: <HomePage /> },
+      { path: '', element: <HomePage /> },
       { path: '/login', element: <LoginPage /> },
       { path: '/signup', element: <SignupPage /> },
-      {
-        path: '/chat', element: (
-          <PrivateRoute>
-            <ChatPage />
-          </PrivateRoute>
-        )
-      },
       { path: '*', element: <NotFound /> }
     ]
-  }
+  },
+  // Chat Router 
+  {
+    path: '/chat',
+    element: <ChatLayout />,
+    children:
+      [
+        {
+          path: '', element: (
+            <PrivateRoute>
+              <ChatPage />
+            </PrivateRoute>
+          )
+        }
+      ]
+  },
 ])
 
 function App() {

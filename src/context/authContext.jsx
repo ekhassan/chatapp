@@ -9,6 +9,22 @@ export const AuthContextProvider = ({ children }) => {
 
     // Sign up
     const signUpNewUser = async (email, password, displayName) => {
+
+        const { data: existingUser, error: fetchError } = await supabase
+            .from('users')
+            .select('id')
+            .eq('email', email.toLowerCase())
+            .single();
+
+        if (fetchError && fetchError.code !== 'PGRST116') {
+            console.error("Error checking existing user: ", fetchError);
+            return { success: false, error: fetchError };
+        }
+
+        if (existingUser) {
+            return { success: false, error: 'Email is already in use.' };
+        }
+
         const { data, error: authError } = await supabase.auth.signUp({
             email: email.toLowerCase(),
             password: password,
@@ -22,16 +38,15 @@ export const AuthContextProvider = ({ children }) => {
         const { error: dbError } = await supabase.from('users').insert([
             {
                 id: data.user.id,
+                name: displayName,
                 email: email.toLowerCase(),
-                displayName: displayName,
             }
-        ])
+        ]).single();
+
         if (dbError) {
             console.error("Error storing user data in users table:", dbError);
             return { success: false, error: dbError };
         }
-
-        console.log(data)
 
         return { success: true, data };
     };

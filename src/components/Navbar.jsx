@@ -21,19 +21,23 @@ const Navbar = () => {
                         >
                             Home
                         </NavLink>
-                        <NavLink
-                            to="/chat"
-                            className={({ isActive }) =>
-                                isActive ? "text-white font-semibold" : "text-gray-300"
-                            }
-                        >
-                            Chat
-                        </NavLink>
+
 
                         <div>
                             {
                                 session?.user ?
-                                    <Popover session={session} onClick={signOut} /> :
+                                    <>
+                                        <NavLink
+                                            to="/chat"
+                                            className={({ isActive }) =>
+                                                isActive ? "text-white font-semibold" : "text-gray-300"
+                                            }
+                                        >
+                                            Chat
+                                        </NavLink>
+                                        <Popover session={session} onClick={signOut} />
+                                    </>
+                                    :
                                     <div className="flex items-center gap-4">
                                         <NavLink to="/login"
                                             className={({ isActive }) =>
