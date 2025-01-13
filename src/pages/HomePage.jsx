@@ -21,7 +21,7 @@ const HomePage = () => {
                             {import.meta.env.VITE_APP_NAME} is an extensible, self-hosted AI interface that adapts to prompt to generate image.
                         </h5>
                         <div>
-                            <Link to={'/login'} className="btn rounded-full btn-wide glass text-white hover:text-black">Get Started <ArrowUpRight size={16} /></Link>
+                            <Link to={'/chat'} className="btn rounded-full btn-wide glass text-white hover:text-black">Get Started <ArrowUpRight size={16} /></Link>
                         </div>
                     </div>
 

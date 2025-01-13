@@ -36,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
             }
 
             console.log("Sign-in success:", data);
-            return { success: true, data }; // Return the user data
+            return { success: true, session: data.session }; // Return the user data
         } catch (error) {
             // Handle unexpected issues
             console.error("Unexpected error during sign-in:", error.message);
@@ -75,7 +75,7 @@ export const AuthContextProvider = ({ children }) => {
 };
 
 AuthContextProvider.propTypes = {
-    children: PropTypes.node.isRequired, 
+    children: PropTypes.node.isRequired,
 };
 
 export const UserAuth = () => {

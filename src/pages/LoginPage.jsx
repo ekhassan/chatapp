@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -12,8 +12,16 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { signInUser } = UserAuth();
+    const { signInUser, session } = UserAuth();
     const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (session) {
+            navigate("/chat")
+        }
+    }, [navigate, session])
+
 
     const onSubmit = async ({ email, password }) => {
         try {
@@ -26,7 +34,7 @@ const LoginPage = () => {
 
             if (session) {
                 toast.success('Login successful! Redirecting...');
-                navigate('/dashboard');
+                navigate('/chat');
             }
         } catch (error) {
             toast.error(error.message || 'Login failed. Please try again.');

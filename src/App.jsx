@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
 import PrivateRoute from "./components/PrivateRoute"
+import ChatPage from "./pages/ChatPage"
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       {
         path: '/chat', element: (
           <PrivateRoute>
-            <HomePage />
+            <ChatPage />
           </PrivateRoute>
         )
       },
