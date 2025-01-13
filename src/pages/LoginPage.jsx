@@ -53,7 +53,7 @@ const LoginPage = () => {
                     </h2>
                     <hr />
                     <div className='mt-4'>
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent rounded-full">
+                        <label className="input input-bordered flex items-center gap-2 input-ghost rounded-full">
                             <Mail className='h-4 w-4 opacity-70' size={16} />
                             <input type="email" className="grow" placeholder="Email"
                                 id="email"
@@ -64,7 +64,7 @@ const LoginPage = () => {
                         {errors.email && <span className="text-red-500">{errors.email.message}</span>}
                     </div>
                     <div className="mt-4">
-                        <label className="input input-bordered flex items-center gap-2 bg-transparent rounded-full">
+                        <label className="input input-bordered flex items-center gap-2 input-ghost rounded-full">
                             <Key className='h-4 w-4 opacity-70' size={16} />
                             <input type={showPassword ? 'text' : 'password'} className="grow" placeholder="Password"
                                 id="password"
@@ -79,16 +79,16 @@ const LoginPage = () => {
                                 className="focus:outline-none"
                             >
                                 {showPassword ? (
-                                    <EyeClosed className='h-4 w-4 opacity-70' size={16} />
+                                    <EyeClosed className='h-4 w-4 opacity-70' size={18} />
                                 ) : (
-                                    <Eye className='h-4 w-4 opacity-70' size={16} />
+                                    <Eye className='h-4 w-4 opacity-70' size={18} />
                                 )}
                             </button>
                         </label>
                         {errors.password && <span className="text-red-500">{errors.password.message}</span>}
                     </div>
                     <div className='py-5'>
-                        <button type="submit" className="btn glass rounded-full w-full text-white hover:text-black" disabled={loading}>
+                        <button type="submit" className="btn glass rounded-full w-full text-white hover:text-black hover:bg-white" disabled={loading}>
                             {loading ? <span className="loading loading-spinner text-white loading-md"></span> : ""}
                             Login
                         </button>

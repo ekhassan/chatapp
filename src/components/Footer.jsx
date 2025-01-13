@@ -4,8 +4,8 @@ import { getYear } from "../utils/dates"
 const Footer = () => {
     return (
         <>
-            <footer className="px-2 py-5 border-t-2 border-gray-400" >
-                <div className="flex items-center justify-between">
+            <footer className="px-5 py-5 border-t-2 border-gray-400" >
+                <div className="flex flex-wrap items-center justify-between">
                     <Link to={`mailto:${import.meta.env.VITE_SUPPORT_MAIL}`} className="text-sm font-semibold text-gray-300">{import.meta.env.VITE_SUPPORT_MAIL}</Link>
                     <div>
                         <div>

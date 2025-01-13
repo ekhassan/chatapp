@@ -9,17 +9,26 @@ export const AuthContextProvider = ({ children }) => {
 
     // Sign up
     const signUpNewUser = async (email, password, displayName) => {
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error: authError } = await supabase.auth.signUp({
             email: email.toLowerCase(),
             password: password,
-            data: {
-                displayName: displayName,
-            },
         });
 
-        if (error) {
-            console.error("Error signing up: ", error);
-            return { success: false, error };
+        if (authError) {
+            console.error("Error signing up: ", authError);
+            return { success: false, authError };
+        }
+
+        const { error: dbError } = await supabase.from('users').insert([
+            {
+                id: data.user.id,
+                email: email.toLowerCase(),
+                displayName: displayName,
+            }
+        ])
+        if (dbError) {
+            console.error("Error storing user data in users table:", dbError);
+            return { success: false, error: dbError };
         }
 
         console.log(data)

@@ -6,10 +6,9 @@ const Navbar = () => {
 
     const { session, signOut } = UserAuth()
 
-    console.log(session)
 
     return (
-        <header className="fixed w-full p-2 backdrop-blur-sm">
+        <header className="fixed w-full p-2 backdrop-blur-sm z-10">
             <nav>
                 <div className="flex items-center justify-between p-4">
                     <Link to='/' ><h3 className="text-xl  font-semibold">{import.meta.env.VITE_APP_NAME}</h3></Link>

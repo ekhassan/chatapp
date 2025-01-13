@@ -10,7 +10,12 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthContextProvider>
       <App />
-      <Toaster />
+      <Toaster toastOptions={{
+        style: {
+          background: '#616161',
+          color: '#fafafa',
+        },
+      }} />
     </AuthContextProvider>
 
   </StrictMode>,
