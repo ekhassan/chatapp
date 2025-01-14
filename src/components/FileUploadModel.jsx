@@ -1,7 +1,11 @@
+import PropTypes from 'prop-types';
 import { useForm } from "react-hook-form";
-import { uploadFile } from "../services/chatApi"; // Adjust the import path as needed
 import { useState } from "react";
 import toast from "react-hot-toast";
+
+import { uploadFile } from "../services/chatApi";
+import { convertFileToBinary } from "../utils/binaryConversion"
+
 
 const FileUploadModal = ({ userId }) => {
     const { register, handleSubmit, reset } = useForm();
@@ -18,8 +22,16 @@ const FileUploadModal = ({ userId }) => {
             const formData = new FormData();
             formData.append("file", data.file[0]);
 
+            const file = data.file[0]
+
+            console.log("Original File : ", file)
+
+            const binFile = await convertFileToBinary(file)
+
+            console.log("Binary File : ", binFile)
+
             toast.promise(
-                uploadFile(userId, formData),
+                uploadFile(userId, binFile),
                 {
                     loading: 'Uploading...',
                     success: () => {
@@ -69,5 +81,10 @@ const FileUploadModal = ({ userId }) => {
         </>
     );
 };
+
+
+FileUploadModal.propTypes = {
+    userId: PropTypes.string.isRequired,
+}
 
 export default FileUploadModal;
