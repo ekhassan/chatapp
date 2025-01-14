@@ -3,7 +3,7 @@ import { MessageSquare } from "lucide-react"
 
 import { Link } from "react-router-dom"
 
-import BramHead from "../assets/images/hero_section.png"
+import BramHead from "../assets/images/Bram_Biomechanic_head.png"
 
 const HomePage = () => {
     return (
