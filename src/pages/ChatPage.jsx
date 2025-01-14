@@ -60,9 +60,7 @@ const ChatPage = () => {
         }
     };
 
-    const FileSubmit = async () => {
 
-    }
 
     const startPolling = (userMessage) => {
         if (pollingInterval) clearInterval(pollingInterval);

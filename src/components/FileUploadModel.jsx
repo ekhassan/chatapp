@@ -4,7 +4,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 import { uploadFile } from "../services/chatApi";
-import { convertFileToBinary } from "../utils/binaryConversion"
+
 
 
 const FileUploadModal = ({ userId }) => {
@@ -19,19 +19,11 @@ const FileUploadModal = ({ userId }) => {
         setError(null);
 
         try {
-            const formData = new FormData();
-            formData.append("file", data.file[0]);
 
             const file = data.file[0]
 
-            console.log("Original File : ", file)
-
-            const binFile = await convertFileToBinary(file)
-
-            console.log("Binary File : ", binFile)
-
             toast.promise(
-                uploadFile(userId, binFile),
+                uploadFile(userId, file),
                 {
                     loading: 'Uploading...',
                     success: () => {

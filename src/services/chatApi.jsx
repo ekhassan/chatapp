@@ -13,11 +13,19 @@ export const sendMessage = async (user_id, prompt) => {
     }
 };
 
-export const uploadFile = async (user_id, data) => {
+export const uploadFile = async (user_id, binFile) => {
+
+    const formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('data0', binFile);
+
+    console.log(binFile);
+
     try {
-        const response = await axios.post(import.meta.env.VITE_UPLOAD_API, {
-            user_id,
-            data0:data,
+        const response = await axios.post(import.meta.env.VITE_UPLOAD_API, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
         });
         return response.data;
     } catch (error) {
